@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Launcher</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: white;
+  background-color: #111811;
+  background-image: url("./Images.jpeg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+    }
+
+   
+    header {
+      padding: 24px 18px;
+      background: #263d28;
+      border-bottom: 4px solid #659447;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 27px;
+    }
+
+    header p {
+      color: #d1e2ca;
+      margin-bottom: 0;
+    }
+
+    main { padding: 18px; }
+
+    .hero {
+      background: #202c20;
+      border: 1px solid #405b3c;
+      border-radius: 12px;
+      padding: 22px;
+      text-align: center;
+    }
+
+    .block {
+      font-size: 55px;
+      margin: 8px;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 10px;
+      border: 0;
+      border-radius: 8px;
+      background: #6eaa43;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .secondary { background: #354b35; }
+
+    .section {
+      margin-top: 20px;
+      padding: 16px;
+      border-radius: 10px;
+      background: #202920;
+    }
+
+    .section h2 { margin-top: 0; }
+
+    footer {
+      padding: 20px;
+      color: #a9b6a5;
+      text-align: center;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>MI LAUNCHER</h1>
+    <p>Tu espacio de Minecraft Bedrock</p>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="block">🟩</div>
+      <h2>¡Bienvenido!</h2>
+      <p>Todo lo que necesitas para tu aventura.</p>
+      <button onclick="jugar()">JUGAR</button>
+    </section>
+
+    <section class="section">
+      <h2>📰 Noticias</h2>
+      <p>Próximamente encontrarás aquí las novedades.</p>
+    </section>
+
+    <section class="section">
+      <h2>📦 Recursos</h2>
+      <p>Organiza tus texturas, mapas y complementos.</p>
+      <button class="secondary" onclick="alert('Añadiremos el catálogo de recursos en el siguiente paso.')">
+        VER RECURSOS
+      </button>
+    </section>
+
+    <section class="section">
+      <h2>⚙️ Ajustes</h2>
+      <button class="secondary" onclick="cambiarTema()">
+        CAMBIAR TEMA
+      </button>
+    </section>
+  </main>
+
+  <footer>
+    Proyecto independiente para Minecraft Bedrock.
+  </footer>
+
+  <script>
+    function jugar() {
+      alert("Próximamente configuraremos el acceso a Minecraft Bedrock.");
+    }
+
+    function cambiarTema() {
+      document.body.style.background =
+        document.body.style.background === "rgb(240, 240, 240)"
+          ? "#111811"
+          : "#f0f0f0";
+
+      document.body.style.color =
+        document.body.style.background === "rgb(240, 240, 240)"
+          ? "#111811"
+          : "#ffffff";
+    }
+  </script>
+</body>
+</html>
