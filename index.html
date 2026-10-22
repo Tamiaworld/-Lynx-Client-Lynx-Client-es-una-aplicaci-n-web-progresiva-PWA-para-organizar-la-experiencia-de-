@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#122018">
+<meta name="description" content="Lynx Client: organiza tus mundos, recursos y aventuras de Minecraft Bedrock.">
+<link rel="manifest" href="./manifest.json">
+<link rel="icon" href="./icons/icon.svg" type="image/svg+xml">
+<title>Lynx Client</title>
+<style>
+:root{color-scheme:dark;--bg:#0b110e;--panel:#121d17;--panel2:#18271e;--green:#5ee06b;--green2:#25a947;--text:#eef7ef;--muted:#a5b6a8;--line:#294232}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#1b3825 0,#0b110e 58%);color:var(--text);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;min-height:100vh}
+header{padding:24px 18px 12px;max-width:980px;margin:auto;display:flex;align-items:center;gap:14px}
+.brand-icon{width:66px;height:66px;flex-shrink:0}h1{font-size:clamp(1.7rem,5vw,2.5rem);letter-spacing:.08em;margin:0;font-weight:900}h1 span{color:var(--green)}.tagline{color:var(--muted);margin:2px 0 0}
+main{max-width:980px;margin:auto;padding:14px 18px 34px}.hero{border:1px solid var(--line);border-radius:24px;background:linear-gradient(135deg,rgba(26,48,34,.96),rgba(15,24,19,.97));padding:clamp(20px,5vw,36px);box-shadow:0 20px 60px #0004}
+.eyebrow{font-size:.75rem;text-transform:uppercase;letter-spacing:.18em;color:var(--green);font-weight:800}.hero h2{font-size:clamp(1.6rem,5vw,2.6rem);line-height:1.1;margin:10px 0}.hero p{color:var(--muted);max-width:650px}
+.buttons{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-top:22px}.btn{border:1px solid var(--line);background:#1b2a20;color:var(--text);border-radius:14px;padding:14px 16px;text-decoration:none;font:inherit;font-weight:750;display:flex;align-items:center;justify-content:center;gap:9px;cursor:pointer;min-height:52px;transition:transform .15s,border-color .15s}.btn:hover{transform:translateY(-2px);border-color:var(--green)}.btn.primary{background:linear-gradient(135deg,#5ee06b,#25a947);color:#07120a;border:0}.btn:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #9cff9f;outline-offset:2px}
+.quick-actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:10px;margin-top:16px}.mini-btn{border:1px solid var(--line);background:linear-gradient(135deg,#17291d,#101a13);color:var(--text);border-radius:12px;padding:12px;cursor:pointer;font:inherit;font-weight:700;min-height:48px}.mini-btn:hover{border-color:var(--green);transform:translateY(-1px)}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:18px}.card{background:rgba(18,29,23,.94);border:1px solid var(--line);border-radius:18px;padding:18px}.card h3{margin:0 0 6px}.card p{margin:0;color:var(--muted);font-size:.93rem}.card .btn{margin-top:14px;width:100%}
+section h2{font-size:1.25rem;margin:26px 0 12px}.status{font-size:.9rem;color:var(--muted);margin-top:14px}.status strong{color:var(--green)}.field{display:grid;gap:6px;margin:12px 0}.field label{font-size:.9rem;color:var(--muted)}input,textarea{width:100%;padding:12px;border:1px solid var(--line);border-radius:10px;background:#0b130e;color:var(--text);font:inherit}textarea{min-height:90px;resize:vertical}.world{padding:12px;border:1px solid var(--line);border-radius:12px;margin:8px 0;display:flex;justify-content:space-between;gap:10px;align-items:center}.world small{color:var(--muted)}.world button{background:#25372a;border:1px solid var(--line);color:var(--text);border-radius:8px;padding:7px 10px}
+footer{max-width:980px;margin:auto;padding:0 18px 28px;color:var(--muted);font-size:.82rem;text-align:center}#toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#e7ffea;color:#0b1a0e;padding:12px 16px;border-radius:12px;box-shadow:0 8px 30px #0007;display:none;max-width:calc(100% - 28px);z-index:5}
+@media(max-width:480px){header{padding-top:18px}.brand-icon{width:54px;height:54px}.hero{border-radius:18px}.buttons{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+<img class="brand-icon" src="./icons/icon.svg" alt="Logo de Lynx Client">
+<div><h1>LYNX <span>CLIENT</span></h1><p class="tagline">Tu mundo, tu aventura, tu historia.</p></div>
+</header>
+<main>
+<section class="hero">
+<div class="eyebrow">LYNX CLIENT · MINECRAFT BEDROCK</div>
+<h2>Una nueva vida. La misma aventura.</h2>
+<p>Tu espacio personal con las herramientas de Lynx Client. Organiza tus mundos, guarda recursos y prepara tu próxima aventura desde Android o Windows.</p>
+<div class="buttons">
+<button class="btn primary" id="play">▶ Jugar Minecraft</button>
+<button class="btn" id="install" hidden>＋ Instalar Lynx Client</button>
+<button class="btn" id="installAndroid">📱 Instalar en celular</button>
+<button class="btn" id="installWindows">🖥️ Instalar en Windows</button>
+<a class="btn" href="https://www.minecraft.net/" target="_blank" rel="noopener">🌐 Minecraft oficial</a>
+<a class="btn" href="#worlds">🌍 Mis mundos</a>
+<a class="btn" href="#resources">📦 Recursos</a>
+<a class="btn" href="#news">📰 Noticias</a>
+<a class="btn" href="#settings">⚙️ Ajustes y copia</a>
+</div>
+<p class="status" id="playStatus">Estado: <strong>listo</strong> · Esta PWA organiza tu experiencia; no instala Minecraft.</p>
+<div class="quick-actions" aria-label="Acciones rápidas">
+<button class="mini-btn" id="randomIdea">🎲 Idea para jugar</button>
+<button class="mini-btn" id="sessionTimer">⏱️ Iniciar sesión</button>
+<button class="mini-btn" id="stopTimer">⏹️ Terminar sesión</button>
+<button class="mini-btn" id="copyProject">🔗 Copiar nombre del proyecto</button>
+<button class="mini-btn" id="fullscreen">⛶ Pantalla completa</button>
+<button class="mini-btn" id="quickBackup">💾 Descargar respaldo</button>
+</div>
+<p class="status" id="actionStatus" aria-live="polite">Acciones rápidas listas.</p>
+</section>
+
+<section id="news">
+<h2>📰 Novedades de Minecraft</h2>
+<div class="grid">
+<article class="card"><h3>🌿 Tu próxima aventura</h3><p>Organiza tus construcciones y tus historias de supervivencia. Usa este espacio para llevar el progreso de tus mundos.</p></article>
+<article class="card"><h3>🐾 Lynx Client</h3><p>Herramientas para guardar mundos, administrar recursos, registrar estadísticas y respaldar tus datos en un solo lugar.</p></article>
+<article class="card"><h3>📱 Android y Windows</h3><p>Interfaz adaptable e instalable como aplicación web progresiva cuando el navegador lo permita. No reemplaza Minecraft ni es un launcher nativo.</p></article>
+</div>
+</section>
+
+<section>
+<h2>Tu espacio de juego</h2>
+<div class="grid">
+<article class="card"><h3>👤 Perfil de jugador</h3><p>Guarda el nombre que usas en tus aventuras.</p><div class="field"><label for="playerName">Nombre de jugador</label><input id="playerName" maxlength="32" placeholder="Tu gamertag"></div><button class="btn" id="saveProfile">Guardar perfil</button></article>
+<article class="card"><h3>📊 Estadísticas</h3><p>Registra tus datos manualmente. Lynx no puede leer automáticamente tus estadísticas del juego.</p><div class="field"><label for="hours">Horas jugadas (aprox.)</label><input id="hours" type="number" min="0" max="999999" placeholder="0"></div><button class="btn" id="saveStats">Guardar estadísticas</button><p id="statsView" style="margin-top:10px"></p></article>
+<article class="card"><h3>🌙 Apariencia</h3><p>Alterna entre el tema oscuro y un tema claro.</p><button class="btn" id="theme">Cambiar tema</button></article>
+</div>
+</section>
+
+<section id="worlds">
+<h2>🌍 Mis mundos</h2>
+<div class="card">
+<p>Registra nombres y notas de tus mundos. Se guardan localmente en este dispositivo y navegador.</p>
+<div class="field"><label for="worldName">Nombre del mundo</label><input id="worldName" maxlength="60" placeholder="Ej. Mi supervivencia"></div>
+<div class="field"><label for="worldNotes">Notas (opcional)</label><textarea id="worldNotes" maxlength="500" placeholder="Semilla, objetivos o coordenadas (evita datos privados)"></textarea></div>
+<button class="btn primary" id="addWorld">＋ Añadir mundo</button>
+<div id="worldList" aria-live="polite"></div>
+</div>
+</section>
+
+<section id="resources">
+<h2>📦 Recursos favoritos</h2>
+<div class="card">
+<p>Guarda enlaces de packs, mapas o complementos que quieras consultar después. Revisa siempre que la fuente sea segura y compatible con tu versión.</p>
+<div class="field"><label for="resourceName">Nombre del recurso</label><input id="resourceName" maxlength="80" placeholder="Ej. Pack de texturas"></div>
+<div class="field"><label for="resourceUrl">Enlace web</label><input id="resourceUrl" type="url" placeholder="https://..."></div>
+<button class="btn primary" id="addResource">＋ Guardar recurso</button>
+<div id="resourceList" aria-live="polite"></div>
+</div>
+</section>
+
+<section id="settings">
+<h2>⚙️ Ajustes y copia de seguridad</h2>
+<div class="grid">
+<article class="card"><h3>💾 Datos locales</h3><p>Exporta tus datos para guardarlos o trasladarlos manualmente a otro dispositivo.</p><button class="btn" id="export">Exportar copia JSON</button></article>
+<article class="card"><h3>📥 Restaurar copia</h3><p>Importa un archivo JSON exportado por Lynx Client. La importación reemplazará los datos actuales.</p><input id="importFile" type="file" accept=".json,application/json" style="margin-top:12px"><button class="btn" id="import">Importar copia</button></article>
+<article class="card"><h3>🧹 Borrar datos</h3><p>Elimina perfil, mundos, recursos y estadísticas guardados en este navegador.</p><button class="btn" id="clear">Borrar datos locales</button></article>
+</div>
+</section>
+</main>
+<footer>Lynx Client es un proyecto independiente y no está afiliado a Mojang Studios ni Microsoft. Minecraft pertenece a sus respectivos titulares.<br>La instalación PWA no equivale a instalar un APK ni un launcher nativo.</footer>
+<div id="toast" role="status" aria-live="polite"></div>
+<script>
+const KEY='lynx-client-data-v1';
+const LEGACY_KEY='lynx-otra-vida-data-v1';
+const defaults={profile:{name:''},stats:{hours:0},worlds:[],resources:[],theme:'dark'};
+function load(){try{const saved=localStorage.getItem(KEY)??localStorage.getItem(LEGACY_KEY)??'{}';const parsed=JSON.parse(saved);if(!localStorage.getItem(KEY)&&localStorage.getItem(LEGACY_KEY))localStorage.setItem(KEY,saved);return {...structuredClone(defaults),...parsed}}catch{return structuredClone(defaults)}}
+let data=load();
+const $=id=>document.getElementById(id);
+function save(){localStorage.setItem(KEY,JSON.stringify(data));render()}
+function toast(msg){const el=$('toast');el.textContent=msg;el.style.display='block';clearTimeout(window.__toastTimer);window.__toastTimer=setTimeout(()=>el.style.display='none',2800)}
+function safeUrl(s){try{const u=new URL(s);return ['http:','https:'].includes(u.protocol)?u.href:null}catch{return null}}
+function render(){
+ $('playerName').value=data.profile?.name||'';$('hours').value=data.stats?.hours??0;
+ $('statsView').textContent=`Horas registradas: ${Number(data.stats?.hours||0)}`;
+ $('worldList').innerHTML='';(data.worlds||[]).forEach((w,i)=>{const el=document.createElement('div');el.className='world';const info=document.createElement('div');const title=document.createElement('strong');title.textContent=w.name;const note=document.createElement('small');note.textContent=w.notes||'Sin notas';info.append(title,document.createElement('br'),note);const del=document.createElement('button');del.textContent='Eliminar';del.onclick=()=>{data.worlds.splice(i,1);save();toast('Mundo eliminado')};el.append(info,del);$('worldList').append(el)});
+ $('resourceList').innerHTML='';(data.resources||[]).forEach((r,i)=>{const el=document.createElement('div');el.className='world';const info=document.createElement('div');const title=document.createElement('strong');title.textContent=r.name;const link=document.createElement('a');link.href=r.url;link.target='_blank';link.rel='noopener';link.textContent='Abrir recurso';link.style.color='var(--green)';info.append(title,document.createElement('br'),link);const del=document.createElement('button');del.textContent='Eliminar';del.onclick=()=>{data.resources.splice(i,1);save();toast('Recurso eliminado')};el.append(info,del);$('resourceList').append(el)});
+ document.body.classList.toggle('light',data.theme==='light');
+ document.documentElement.style.setProperty('--bg',data.theme==='light'?'#edf4ee':'#0b110e');
+ document.documentElement.style.setProperty('--panel',data.theme==='light'?'#fff':'#121d17');
+ if(data.theme==='light'){document.body.style.background='linear-gradient(135deg,#edf4ee,#dceade)';document.body.style.color='#15251a';document.querySelectorAll('.card,.hero').forEach(e=>{e.style.background='#ffffff';e.style.color='#15251a'});document.querySelectorAll('.card p,.tagline,.hero p').forEach(e=>e.style.color='#526657');document.querySelectorAll('input,textarea').forEach(e=>{e.style.background='#f6faf6';e.style.color='#15251a'})}
+ else{document.body.style.background='radial-gradient(ellipse at top,#1b3825 0,#0b110e 58%)';document.body.style.color='var(--text)';document.querySelectorAll('.card').forEach(e=>{e.style.background='rgba(18,29,23,.94)';e.style.color='var(--text)'});document.querySelectorAll('.hero').forEach(e=>{e.style.background='linear-gradient(135deg,rgba(26,48,34,.96),rgba(15,24,19,.97))';e.style.color='var(--text)'});document.querySelectorAll('.card p,.tagline,.hero p').forEach(e=>e.style.color='var(--muted)');document.querySelectorAll('input,textarea').forEach(e=>{e.style.background='#0b130e';e.style.color='var(--text)'})}
+}
+$('saveProfile').onclick=()=>{data.profile.name=$('playerName').value.trim();save();toast('Perfil guardado')};
+$('saveStats').onclick=()=>{data.stats.hours=Math.max(0,Number($('hours').value)||0);save();toast('Estadísticas guardadas')};
+$('addWorld').onclick=()=>{const name=$('worldName').value.trim();if(!name)return toast('Escribe el nombre del mundo');data.worlds.push({name,notes:$('worldNotes').value.trim()});$('worldName').value='';$('worldNotes').value='';save();toast('Mundo añadido')};
+$('addResource').onclick=()=>{const name=$('resourceName').value.trim(),url=safeUrl($('resourceUrl').value.trim());if(!name||!url)return toast('Escribe un nombre y un enlace HTTP/HTTPS válido');data.resources.push({name,url});$('resourceName').value='';$('resourceUrl').value='';save();toast('Recurso guardado')};
+$('theme').onclick=()=>{data.theme=data.theme==='light'?'dark':'light';save();toast('Tema actualizado')};
+$('export').onclick=()=>{const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='lynx-client-backup.json';a.click();URL.revokeObjectURL(a.href);toast('Copia exportada')};
+$('import').onclick=async()=>{const f=$('importFile').files[0];if(!f)return toast('Selecciona un archivo JSON');try{const d=JSON.parse(await f.text());if(!d||!d.profile||!Array.isArray(d.worlds)||!Array.isArray(d.resources))throw Error();if(!confirm('Esto reemplazará los datos actuales. ¿Continuar?'))return;data={...structuredClone(defaults),...d};save();toast('Copia restaurada')}catch{toast('El archivo no es una copia válida de Lynx Client')}};
+$('clear').onclick=()=>{if(confirm('¿Borrar todos los datos locales de Lynx Client en este navegador?')){data=structuredClone(defaults);save();toast('Datos locales borrados')}};
+$('play').onclick=()=>{const s=$('playStatus');s.innerHTML='En Android, intenta abrir Minecraft…';let launched=false;try{window.location.href='minecraft://';launched=true}catch{}setTimeout(()=>{s.textContent='Si Minecraft no se abrió, abre el juego manualmente. En Windows, esta PWA no puede iniciar Minecraft de forma garantizada.';},1200)};
+let installPrompt;$('install').hidden=true;window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();installPrompt=e;$('install').hidden=false});$('install').onclick=async()=>{if(!installPrompt){toast('Usa el menú del navegador: Instalar aplicación');return}installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;$('install').hidden=true};
+render();
+if('serviceWorker' in navigator && location.protocol!=='file:'){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}))}
+</script>
+</body></html>
