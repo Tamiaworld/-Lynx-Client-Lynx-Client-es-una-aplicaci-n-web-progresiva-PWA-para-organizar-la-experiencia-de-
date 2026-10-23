@@ -1,5 +1,6 @@
-﻿import "./styles.css";
-import { invoke } from "@tauri-apps/api/core";
+﻿
+import "./styles.css";
+import { invoke, isTauri } from "@tauri-apps/api/core";
 
 const sections = document.querySelectorAll<HTMLElement>(".page");
 const navItems = document.querySelectorAll<HTMLButtonElement>(".nav-item");
@@ -25,9 +26,11 @@ function showSection(sectionId: string) {
   if (statusMessage) statusMessage.textContent = "";
 }
 
-navItems.forEach(item => item.addEventListener("click", () => {
-  if (item.dataset.section) showSection(item.dataset.section);
-}));
+navItems.forEach(item =>
+  item.addEventListener("click", () => {
+    if (item.dataset.section) showSection(item.dataset.section);
+  })
+);
 
 document.querySelectorAll<HTMLButtonElement>("[data-goto]").forEach(button =>
   button.addEventListener("click", () => {
@@ -50,20 +53,36 @@ if (bedrock) {
   const detectButton = document.createElement("button");
   detectButton.className = "primary-button";
   detectButton.textContent = "Comprobar instalación";
+
   detectButton.addEventListener("click", async () => {
-    result!.textContent = "Comprobando...";
+    if (!isTauri()) {
+      result!.textContent =
+        "La comprobación de Minecraft Bedrock requiere la aplicación de escritorio Lynx Client en Windows.";
+      return;
+    }
+
+    result!.textContent = "Comprobando instalación...";
+
     try {
       result!.textContent = await invoke<string>("detect_minecraft_bedrock");
     } catch (error) {
-      result!.textContent = `Error: ${String(error)}`;
+      result!.textContent = `No se pudo comprobar la instalación: ${String(error)}`;
     }
   });
 
   const openButton = document.createElement("button");
   openButton.className = "primary-button";
   openButton.textContent = "▶ Abrir Minecraft Bedrock";
+
   openButton.addEventListener("click", async () => {
+    if (!isTauri()) {
+      result!.textContent =
+        "Para abrir Minecraft Bedrock, ejecuta Lynx Client como aplicación de escritorio en Windows.";
+      return;
+    }
+
     result!.textContent = "Solicitando apertura de Minecraft...";
+
     try {
       result!.textContent = await invoke<string>("open_minecraft_bedrock");
     } catch (error) {
@@ -81,3 +100,4 @@ document.querySelector<HTMLButtonElement>("#start-button")?.addEventListener("cl
 });
 
 showSection("inicio");
+
