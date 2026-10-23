@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">"lynx-client"</string>
+    <string name="main_activity_title">"lynx-client"</string>
+</resources>

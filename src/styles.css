@@ -1,0 +1,540 @@
+
+:root {
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: #edf5ef;
+  background: #0b100d;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  --green: #65e58b;
+  --green-dark: #183d28;
+  --panel: #121a15;
+  --muted: #92a397;
+  --border: #25352a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 80% 0%, #173321 0%, transparent 35%),
+    #0b100d;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+.launcher {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 245px;
+  min-width: 245px;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 18px 20px;
+  background: #0e1511;
+  border-right: 1px solid var(--border);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 10px;
+  margin-bottom: 52px;
+}
+
+.brand-icon {
+  display: grid;
+  place-items: center;
+  width: 45px;
+  height: 45px;
+  border-radius: 13px;
+  color: #07120b;
+  background: var(--green);
+  font-size: 27px;
+  font-weight: 900;
+  box-shadow: 0 0 25px #65e58b22;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  letter-spacing: 3px;
+}
+
+.brand-text strong {
+  font-size: 20px;
+}
+
+.brand-text span {
+  color: var(--green);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.menu-label,
+.eyebrow {
+  color: #8ca194;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.menu-label {
+  margin: 0 10px 15px;
+}
+
+.navigation {
+  display: grid;
+  gap: 8px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  color: #a9b8ad;
+  background: transparent;
+  text-align: left;
+  transition: 0.2s ease;
+}
+
+.nav-item:hover,
+.nav-item.active {
+  color: var(--green);
+  background: #1a3021;
+  border-color: #284b33;
+}
+
+.nav-item:first-letter {
+  font-size: 19px;
+}
+
+.sidebar-status {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: auto;
+  padding: 14px 8px 0;
+  color: #91a296;
+  font-size: 11px;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 10px #65e58b66;
+}
+
+.main-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+  padding: 27px clamp(20px, 5vw, 65px) 24px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 42px;
+  color: #91a296;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.version {
+  padding: 7px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--green);
+  white-space: nowrap;
+}
+
+.page {
+  display: none;
+  animation: appear 0.25s ease;
+}
+
+.page.active-page {
+  display: block;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.welcome {
+  margin-bottom: 30px;
+}
+
+.welcome h1,
+.page h1 {
+  margin: 15px 0;
+  font-size: clamp(32px, 4vw, 52px);
+  line-height: 1.12;
+  letter-spacing: -1.8px;
+}
+
+.welcome h1 span,
+.page h1 span {
+  color: var(--green);
+}
+
+.welcome p,
+.page > p {
+  max-width: 570px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.featured {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  min-height: 235px;
+  overflow: hidden;
+  padding: 30px;
+  border: 1px solid #2d5138;
+  border-radius: 18px;
+  background:
+    radial-gradient(ellipse at 85% 50%, #244c30 0%, transparent 45%),
+    linear-gradient(115deg, #17251b, #111a14);
+}
+
+.featured-content {
+  position: relative;
+  z-index: 2;
+}
+
+.featured-tag {
+  display: inline-block;
+  padding: 6px 9px;
+  border: 1px solid #376744;
+  border-radius: 5px;
+  color: var(--green);
+  background: #1a3624;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.featured h2 {
+  margin: 16px 0 8px;
+  font-size: 30px;
+}
+
+.featured-content > p {
+  color: #a4b5a8;
+  font-size: 13px;
+}
+
+.primary-button {
+  margin-top: 12px;
+  padding: 12px 17px;
+  border: 0;
+  border-radius: 8px;
+  color: #07120b;
+  background: var(--green);
+  font-size: 12px;
+  font-weight: 800;
+  transition: 0.2s ease;
+}
+
+.primary-button:hover {
+  background: #8af5a5;
+  transform: translateY(-1px);
+}
+
+.status-message {
+  max-width: 320px;
+  line-height: 1.5;
+}
+
+.block-art {
+  position: relative;
+  width: 135px;
+  height: 135px;
+  margin-right: 20px;
+  flex-shrink: 0;
+  transform: rotate(-8deg);
+}
+
+.block {
+  position: absolute;
+  width: 86px;
+  height: 86px;
+  border: 2px solid #568d4e;
+  border-radius: 8px;
+  transform: rotate(45deg);
+}
+
+.block-back {
+  top: 2px;
+  left: 27px;
+  background: #355f36;
+  box-shadow: 0 0 40px #65e58b22;
+}
+
+.block-front {
+  top: 34px;
+  left: 2px;
+  background: linear-gradient(135deg, #65b957, #23472b);
+  box-shadow: 20px 20px 0 #102318;
+}
+
+.section-title {
+  margin: 32px 0 15px;
+  color: #dfeae2;
+  font-size: 12px;
+  letter-spacing: 1.8px;
+}
+
+.edition-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.edition-card {
+  display: grid;
+  justify-items: start;
+  gap: 12px;
+  min-height: 145px;
+  padding: 19px;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  color: #edf5ef;
+  background: var(--panel);
+  text-align: left;
+  transition: 0.2s ease;
+}
+
+.edition-card:hover {
+  border-color: #4c855b;
+  background: #17231a;
+  transform: translateY(-2px);
+}
+
+.edition-icon {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  color: #101710;
+  background: #d3b77a;
+  font-weight: 900;
+}
+
+.bedrock-icon {
+  background: #72aef0;
+}
+
+.edition-card strong {
+  font-size: 13px;
+}
+
+.edition-card > span:last-child {
+  color: var(--green);
+  font-size: 11px;
+}
+
+.info-card {
+  margin-top: 17px;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--panel);
+}
+
+.info-card strong {
+  font-size: 14px;
+}
+
+.info-card p {
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.main-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 35px;
+  color: #718678;
+  font-size: 9px;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 760px) {
+  .launcher {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    min-width: 0;
+    padding: 16px;
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brand {
+    margin-bottom: 20px;
+  }
+
+  .menu-label {
+    margin-top: 0;
+  }
+
+  .navigation {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .nav-item {
+    gap: 8px;
+    padding: 12px 9px;
+    font-size: 12px;
+  }
+
+  .sidebar-status {
+    margin-top: 18px;
+  }
+
+  .main-content {
+    padding: 20px 16px;
+  }
+
+  .topbar {
+    margin-bottom: 30px;
+  }
+
+  .featured {
+    min-height: 220px;
+    padding: 20px;
+  }
+
+  .block-art {
+    width: 65px;
+    height: 90px;
+    margin-right: 0;
+    transform: scale(0.65) rotate(-8deg);
+  }
+
+  .featured h2 {
+    font-size: 24px;
+  }
+
+  .edition-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .edition-card {
+    min-height: 120px;
+  }
+
+  .main-footer {
+    flex-direction: column;
+    line-height: 1.7;
+  }
+}
+
+@media (max-width: 390px) {
+  .block-art {
+    display: none;
+  }
+
+  .welcome h1,
+  .page h1 {
+    font-size: 34px;
+  }
+
+  .version {
+    font-size: 8px;
+  }
+}
+
+
+/* Logos de Lynx Client, Java y Bedrock */
+.brand-icon {
+  overflow: hidden;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+.lynx-logo svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.edition-logo {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  padding: 5px;
+  box-sizing: border-box;
+  border: 1px solid #304b37;
+  border-radius: 10px;
+  background: #15241a;
+}
+
+.edition-logo svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.java-logo {
+  background: #202b24;
+}
+
+.bedrock-logo {
+  background: #172b20;
+}
+
+.edition-card {
+  align-content: start;
+}
+
+.edition-card .edition-logo {
+  margin-bottom: 3px;
+}

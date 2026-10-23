@@ -1,4 +1,3 @@
-
 {
   "id": "./",
   "name": "Lynx Client",
@@ -9,8 +8,8 @@
   "scope": "./",
   "display": "standalone",
   "orientation": "any",
-  "background_color": "#101510",
-  "theme_color": "#72d572",
+  "background_color": "#0b100d",
+  "theme_color": "#65e58b",
   "categories": ["games", "entertainment"],
   "icons": [
     {
@@ -27,4 +26,3 @@
     }
   ]
 }
-

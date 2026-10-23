@@ -1,0 +1,36 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Dependencias y archivos generados
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# Archivos locales de Visual Studio
+.vs/
+
+# Copias de seguridad
+backup-lynx-*/
+
+# Archivos de configuración local
+.env
+.env.*
+!.env.example
+
+# Configuración de editores
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
